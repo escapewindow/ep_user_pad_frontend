@@ -344,7 +344,7 @@ var converterPad = function (UNIX_timestamp) {
     var date = a.getDate();
     var hour = (( a.getHours() < 10) ? "0" : "") + a.getHours();
     var min = ((a.getMinutes() < 10) ? "0" : "") + a.getMinutes();
-    return date + '. ' + month + ' ' + year + ' ' + hour + ':' + min + ' Uhr';
+    return date + '. ' + month + ' ' + year + ' ' + hour + ':' + min;
 };
 
 
