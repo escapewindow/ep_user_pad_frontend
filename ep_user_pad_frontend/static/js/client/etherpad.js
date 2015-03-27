@@ -97,7 +97,7 @@ $(document).ready(function() {
     						' class="headlineImage" alt="User Details"><h1 lang="en">User Details</h1></div><div class="content">'+
     						'<h3 lang="en">Full Name</h3><form id="formUsername"><div class="inputField"><input type="text" '+
     						'lang="en" placeholder="'+ user.user[0].FullName +'" id="newUserName" class="marginRight longInput smallMarginBottom">'+
-    						'</div><button type="submit" class="marginBottom">Change</button></form><h3 lang="en">E-Mailaddress</h3>'+
+    						'</div><button type="submit" class="marginBottom">Change</button></form><h3 lang="en">E-mail address</h3>'+
     						'<form id="formUseremail"><div class="inputField"><input type="text" id="newEmail" lang="en" placeholder="'+ user.user[0].name +'"'+
     						' class="marginRight longInput smallMarginBottom"></div><button type="submit" class="marginBottom">Change</button>'+
     						'</form><h3 lang="en">Change Password</h3><form id="formUserpassword"><div class="inputField"><input type="password" '+
@@ -281,7 +281,7 @@ $(document).ready(function() {
    		value += '<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"'+
 		'></span></div><div id="lightBoxMain" data-groupid= "'+groupID+'" ><div class="headline"><img src="./static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="'+
 		'headlineImage" alt="Login"><h1 lang="en">User Management</h1></div><div class="content"><h3 lang="en">Add User</h3><div id= "wait"><form id = "selUsersForm"><input type="text"'+
-		'lang="en" placeholder="E-Mailaddress(es)" ';
+		'lang="en" placeholder="E-mail address(es)" ';
 //		console.log(selectedUserVal);
    		if(!selectedUserVal == "")
 			value += 'value="'+ selectedUserVal + '"';
@@ -1173,7 +1173,7 @@ $(document).ready(function() {
 			    	$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"'+
 					'></span></div><div id="lightBoxMain" data-groupid= "'+ data.groupid+'" ><div class="headline"><img src="./../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="'+
 					'headlineImage" alt="Login"><h1 lang="en">User Management</h1></div><div class="content"><h3 lang="en">Add User</h3><div id= "wait"><form id = "selUsersForm"><input type="text"'+
-					'lang="en" placeholder="E-Mailaddress(es)" id="selectedUsers" class="marginRight" longInput><button id="invitebtn" type="submit">Add User</button><span lang="en" class="inviteInfo"'+
+					'lang="en" placeholder="E-mail address(es)" id="selectedUsers" class="marginRight" longInput><button id="invitebtn" type="submit">Add User</button><span lang="en" class="inviteInfo"'+
 					'>If there are more than one, separate with ;</span></form></div>');
 					
 			    	$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
@@ -1293,7 +1293,7 @@ $(document).ready(function() {
     	$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain"><div class="headline"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Register"><h1>Register</h1></div><div class="content">\
    							  <form id="formEtherpadRegister">\
     						  <label for="fullname">Full Name</label><div class="inputfield marginBottom"><input type="text" name="fullname" id="fullname" class="smallMarginBottom"></div>\
-    						  <label for="email">E-Mailaddress</label><div class="inputfield marginBottom"><input type="text" name="email" id="email" class="smallMarginBottom"></div>\
+    						  <label for="email">E-mail address</label><div class="inputfield marginBottom"><input type="text" name="email" id="email" class="smallMarginBottom"></div>\
     						  <label for="password">Password</label><div class="inputfield"><input type="password" name="password" id="password" placeholder="Password" class="smallMarginBottom"></div><div class="inputfield marginBottom"><input type="password" name="passwordrepeat" id="passwordrepeat" placeholder="Repeat Password" class="smallMarginBottom"></div>\
     						  <button type="submit" class="register" id="overlayRegister">Register</button>\
    							  </form></div></div></div>');

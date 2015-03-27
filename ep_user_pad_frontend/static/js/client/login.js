@@ -14,7 +14,7 @@ limitations under the License. */
 
 /*
  * Login in index.html
- * 
+ *
  */
 
 var getBaseURL = function(slice,cb){
@@ -27,7 +27,7 @@ var getBaseURL = function(slice,cb){
 	baseURL = pathComponents.slice(0,
 			pathComponents.length - slice).join('/')
 			+ '/';
-	
+
 	url = url + baseURL;
 //	console.log(">>>>>");
 //	console.log(url);
@@ -51,31 +51,31 @@ $(document).ready(function(){
     	//$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain"><div class="headline"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Login"><h1 lang="en">Login</h1></div><div class="content"><div class="overlayLoginArea"><h3 lang="en">Etherpad Account</h3><button id="loginEtherpad" lang="en">Login</button></div><div style="clear:both"></div></div></div></div>');
     	// center the lightBox
     	//$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-    				
+
     	// click-event for the closing of the lightBox
     	//$(".close").click(function(){
    		//	$("#overlay").remove();
    		//	$("#lightBox").remove();
     	//});
-    				
-   		// when the etherpad account login is chosen, the ehterpad login screen appears in the lightBox 
+
+   		// when the etherpad account login is chosen, the ehterpad login screen appears in the lightBox
    		//$("#loginEtherpad").click(function(){
     		//$("#lightBox").remove();
-   				
+
 			$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain"><div class="headline"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Login"><h1 lang="en">Login Etherpad Account</h1></div><div class="content"> \
     							  <form id="formEtherpadLogin">\
-    	  					 	  <div class="inputField"><input type="text" name="email" id="email" placeholder="E-Mailaddress" class="smallMarginBottom"></div>\
+    	  					 	  <div class="inputField"><input type="text" name="email" id="email" placeholder="E-Mail address" class="smallMarginBottom"></div>\
     					 	 	  <div class="inputField"><input type="password" name="password" id="password" placeholder="Password" class="smallMarginBottom"></div>\
     							  <button type="submit" id="overlayLogin" lang="en">Login</button>\
-    							  </form></div></div></div>');    					
+    							  </form></div></div></div>');
     		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-    					    				
+
     		// click-event for the closing of the lightBox
     		$(".close").click(function(){
     			$("#overlay").remove();
     			$("#lightBox").remove();
     		});
-    					
+
     		// validation of the login
     		// TODO: correct reaction on the validation
     		$("#formEtherpadLogin").submit(function(e) {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 				data.email = $("#email").val();
 				data.password = $("#password").val();
 				var url;
-				getSlice(function(slice){	
+				getSlice(function(slice){
 					getBaseURL(slice, function(baseurl){
 						url = baseurl;
 						data.url = baseurl;
@@ -96,7 +96,7 @@ $(document).ready(function(){
 							type: 'POST',
 							data: JSON.stringify(data),
 							contentType: 'application/json',
-							url: url + 'login',	
+							url: url + 'login',
 							success: function(data) {
 								if(data.success){
 									if(window.location.href.indexOf("public_pad") > -1)
@@ -117,7 +117,7 @@ $(document).ready(function(){
 											$(".errorRight").delay(2000).fadeOut(1000);
 										}
 									});
-								};	
+								};
 							},
 							error: function (xhr, ajaxOptions, thrownError) {
 								//console.log(thrownError);
@@ -128,14 +128,14 @@ $(document).ready(function(){
   			});
   		});
  	//});
-    			
+
     // when register is clicked, the register screen appears in the lightBox
    	$("#register").click(function(){
    		$("#wrapper").append('<div id="overlay"></div>');
     	$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain"><div class="headline"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Register"><h1>Register</h1></div><div class="content">\
    							  <form id="formEtherpadRegister">\
     						  <label for="fullname">Full Name</label><div class="inputfield marginBottom"><input type="text" name="fullname" id="fullname" class="smallMarginBottom"></div>\
-    						  <label for="email">E-Mailaddress</label><div class="inputfield marginBottom"><input type="text" name="email" id="email" class="smallMarginBottom"></div>\
+    						  <label for="email">E-Mail address</label><div class="inputfield marginBottom"><input type="text" name="email" id="email" class="smallMarginBottom"></div>\
     						  <label for="password">Password</label><div class="inputfield"><input type="password" name="password" id="password" placeholder="Password" class="smallMarginBottom"></div><div class="inputfield marginBottom"><input type="password" name="passwordrepeat" id="passwordrepeat" placeholder="Repeat Password" class="smallMarginBottom"></div>\
     						  <input type="checkbox" required="required" name="acceptedTerms">I have read and accepted the <a href="./../../static/plugins/ep_user_pad_frontend/static/other/benutzungsrichtlinien.html" target="_blank">terms of usage</a>.<br>\
     						  <button type="submit" class="register" id="overlayRegister">Register</button>\
@@ -147,7 +147,7 @@ $(document).ready(function(){
    			$("#overlay").remove();
    			$("#lightBox").remove();
    		});
-    				
+
 		// validation of the login
     	// TODO: correct reaction on the validation
     	$("#formEtherpadRegister").submit(function(e) {
@@ -155,7 +155,7 @@ $(document).ready(function(){
 //    		console.log('here');
     		//if(validate("#formEtherpadRegister"));
     		//	return false;
-			getSlice(function(slice){	
+			getSlice(function(slice){
 				getBaseURL(slice, function(baseurl){
 					var data = {};
 					var url = baseurl;
@@ -168,7 +168,7 @@ $(document).ready(function(){
 						type: 'POST',
 						data: JSON.stringify(data),
 						contentType: 'application/json',
-						url: url + 'register',	
+						url: url + 'register',
 						success: function(data) {
 							if(data.success){
 								$("#overlay").remove();
@@ -204,41 +204,41 @@ $(document).ready(function(){
 				});
 			});
     	});
-    	
+
     });
-   	
+
 	$('#openPublicPad').click(function(e){
 		e.preventDefault();
 		var padname = $('#padName').val();
 		if(padname.length > 0) {
-			window.location = "public_pad/" + padname; 
+			window.location = "public_pad/" + padname;
 		} else {
 			//$("#padName").css("border-color","#B82349");
 			$("#padName").parent().append('<div class="errorUp" style="margin-left:92px"><span class="arrowUp"></span><span lang="en">Please enter a name</span></div>');
 			$(".errorUp").delay(2000).fadeOut(1000);
 		}
 	});
-	
-	
-	
-    function randomPadName() 
+
+
+
+    function randomPadName()
     {
         var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         var string_length = 10;
         var randomstring = '';
-        for (var i = 0; i < string_length; i++) 
+        for (var i = 0; i < string_length; i++)
         {
             var rnum = Math.floor(Math.random() * chars.length);
             randomstring += chars.substring(rnum, rnum + 1);
         }
         return randomstring;
     }
-    
+
    	/*
    	 * Minimize and Maximize of the Header, groupNav und Footer Element in Pad View
-   	 * 
+   	 *
    	 */
-   	
+
    	// minimize the elements
 	$("#minimize").click(function(){
     	$('header').delay(0).slideUp(800);
@@ -246,43 +246,43 @@ $(document).ready(function(){
     	$('footer').delay(0).slideUp(800);
     	$('#minimize').delay(0).slideUp(800);
     	$('#maximize').delay(1200).slideDown(800);
-    	
+
     	$("#iframePad").animate({height: $(window).height()-4}, 800);
 		$("#iframePad").css("display","block");
    	});
-       	
-   	// maximize the elements		
+
+   	// maximize the elements
   	$("#maximize").click(function(){
    		$('header').delay(300).slideDown(800);
    		$('#groupNav').delay(300).slideDown(800);
    		$('footer').delay(300).slideDown(800);
    		$('#minimize').delay(1500).slideDown(800);
     	$('#maximize').delay(0).slideUp(800);
-    	
+
     	$("#iframePad").delay(300).animate({height: $(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8}, 800);
    	});
-   	
-   	// adjust the height of the iframe 			
+
+   	// adjust the height of the iframe
     $("#iframePad").css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8);
     $(window).resize(function() {
     	if($("header").css("display") != "none")
    			$("#iframePad").css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8);
-   		else 
+   		else
    			$("#iframePad").css("height",$(window).height()-4);
     });
-    			
+
    // adjust the height of main > inside for the iframe (border of 4px )
    $("#iframePad").parent().css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-4);
    $(window).resize(function() {
    		$("#iframePad").parent().css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-4);
    });
-    
+
 	$('#createPublicPad').click(function(e){
 		e.preventDefault();
 //		console.log('here created');
 		window.location = "public_pad/" + randomPadName();
 	});
-    			
+
     // Validate function, checks if the input field is empty
     // @tag: name of the tag
     function validate(tag) {
@@ -297,5 +297,5 @@ $(document).ready(function(){
 		});
 		return false;
 	}
-    
+
 });

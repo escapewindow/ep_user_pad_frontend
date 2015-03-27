@@ -46,7 +46,7 @@ limitations under the License. -->
     		 				<li><a href="#" lang="en">Logout</a></li>
     		 			</ul>
 	    		 	</nav>
-    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">  	
+    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">
     		 	</div>
     		 </header>
     		 <div id="minMax">
@@ -65,29 +65,29 @@ limitations under the License. -->
    		 				</ul>
    		 			</nav>
    		 			<div style="clear: both"></div>
-    		 	</div>	
+    		 	</div>
     		 </div>
     		 <div id="main" >
-       		 	
-       		 </div> 
-       		 	
+
+       		 </div>
+
        		 <footer>
        		 	<div class="inside">
        		 		<p lang="en"><a href="./../../../imprint.html">Imprint</a></p>
        		 	</div>
        		 </footer>
-       		   
+
     	</div>
     	<script>
     	function post(data,url , cb){
-    		
+
     		$.ajax({
     				type: 'POST',
     				data: JSON.stringify(data),
     				contentType: 'application/json',
-    				url: url,	
+    				url: url,
     				success: function(data) {
-    					console.log('success');	
+    					console.log('success');
     					cb(data);
     				},
     				error: function (xhr, ajaxOptions, thrownError) {
@@ -95,9 +95,9 @@ limitations under the License. -->
     					console.log(thrownError);
     					cb(null);
     				}
-    		});	
+    		});
     	};
-    	
+
     	var getBaseURL = function(cb){
     		var  loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
     				: 80)
@@ -112,30 +112,30 @@ limitations under the License. -->
     		url = url + baseURL;
     		cb(url)
     	}
-    	
+
     	$(document).ready(function(){
        		$("#wrapper").append('<div id="overlay"></div>');
         	$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"></div><div id="lightBoxMain"><div class="headline"><img src="./../../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Login"><h1 lang="en">Login</h1></div><div class="content"><div class="overlayLoginArea"><div class="overlayLoginArea"><h3 lang="en">Etherpad Account</h3><button id="loginEtherpad" lang="en">Login</button></div><div style="clear:both"></div></div></div></div>');
         	// center the lightBox
         	$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-        				
+
         	// click-event for the closing of the lightBox
-        				
-       		// when the etherpad account login is chosen, the ehterpad login screen appears in the lightBox 
+
+       		// when the etherpad account login is chosen, the ehterpad login screen appears in the lightBox
        		$("#loginEtherpad").click(function(){
         		$("#lightBox").remove();
-       				
+
     			$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"></div><div id="lightBoxMain"><div class="headline"><img src="./../../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Login"><h1 lang="en">Login Etherpad Account</h1></div><div class="content"> \
         							  <form id="formEtherpadLogin">\
-        	  					 	  <div class="inputField"><input type="text" name="email" id="email" placeholder="E-Mailaddress" class="smallMarginBottom"></div>\
+        	  					 	  <div class="inputField"><input type="text" name="email" id="email" placeholder="E-Mail address" class="smallMarginBottom"></div>\
         					 	 	  <div class="inputField"><input type="password" name="password" id="password" placeholder="Password" class="smallMarginBottom"></div>\
         							  <button type="submit" id="overlayLogin" lang="en">Login</button>\
-        							  </form></div></div></div>');    					
+        							  </form></div></div></div>');
         		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-        					    				
+
         		// click-event for the closing of the lightBox
 
-        					
+
         		// validation of the login
         		// TODO: correct reaction on the validation
         		$("#formEtherpadLogin").submit(function(e) {
@@ -155,7 +155,7 @@ limitations under the License. -->
     						type: 'POST',
     						data: JSON.stringify(data),
     						contentType: 'application/json',
-    						url: url + 'login',	
+    						url: url + 'login',
     						success: function(data) {
     								if(data.success){
     									url = baseurl;
@@ -171,7 +171,7 @@ limitations under the License. -->
     											location.reload();
     										}
     									});
-    									
+
     								}else{
     									console.log(data.error);
     									$("#formEtherpadLogin input").each(function(){
@@ -182,7 +182,7 @@ limitations under the License. -->
     										if($(this).is('#password') && !$(this).next().hasClass("errorRight") && data.error == 'Password is wrong')
     											$(this).parent().append('<div class="errorRight"><img src="./static/plugins/ep_user_pad_frontend/static/images/arrowleft-red-16.png" class="arrowleft"><span class="white" lang="en">' + data.error +'</span></div>');
     									});
-    								};	
+    								};
     						},
     						error: function (xhr, ajaxOptions, thrownError) {
     							console.log(thrownError);
