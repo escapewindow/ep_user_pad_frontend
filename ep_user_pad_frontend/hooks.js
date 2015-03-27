@@ -464,7 +464,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
             } else {
                 getPassword(function (consString) {
                     var msg = eMailAuth.registrationtext;
-                    msg = msg.replace(/<url>/, user.location + "confirm/" + consString);
+                    var loc = user.location.replace(/:\/$/, '/')
+                    msg = msg.replace(/<url>/, loc + "confirm/" + consString)
                     var message = {
                         text: msg,
                         from: eMailAuth.registrationfrom,
@@ -760,7 +761,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
             var msg = eMailAuth.invitationmsg;
             msg = msg.replace(/<groupname>/, group[0].name);
             msg = msg.replace(/<fromuser>/, inviter);
-            msg = msg.replace(/<url>/, location);
+            var loc = location.replace(/:\/$/, '/')
+            msg = msg.replace(/<url>/, loc)
             var message = {
                 text: msg,
                 from: eMailAuth.invitationfrom,
@@ -803,7 +805,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
             var msg = eMailAuth.invitateunregisterednmsg;
             msg = msg.replace(/<groupname>/, group.name);
             msg = msg.replace(/<fromuser>/, name);
-            msg = msg.replace(/<url>/, location);
+            var loc = location.replace(/:\/$/, '/')
+            msg = msg.replace(/<url>/, loc)
             var message = {
                 text: msg,
                 from: eMailAuth.invitationfrom,
@@ -945,7 +948,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
                             var msg = eMailAuth.invitateunregisterednmsg;
                             msg = msg.replace(/<groupname>/, currGroup[0].name);
                             msg = msg.replace(/<fromuser>/, currUser[0].name);
-                            msg = msg.replace(/<url>/, fields.location);
+                            var loc = fields.location.replace(/:\/$/, '/')
+                            msg = msg.replace(/<url>/, loc)
                             var message = {
                                 text: msg,
                                 from: eMailAuth.invitationfrom,
