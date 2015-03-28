@@ -83,7 +83,7 @@ $(document).ready(function(){
     				//return false;
 //			    console.log('here clicked');
 				var data = {};
-				data.email = $("#email").val();
+				data.email = $("#email").val().toLowerCase();
 				data.password = $("#password").val();
 				var url;
 				getSlice(function(slice){
@@ -157,7 +157,7 @@ $(document).ready(function(){
 				getBaseURL(slice, function(baseurl){
 					var data = {};
 					var url = baseurl;
-					data.email = $("#email").val();
+					data.email = $("#email").val().toLowerCase();
 					data.password = $("#password").val();
 					data.fullname = $("#fullname").val();
 					data.passwordrepeat = $("#passwordrepeat").val();

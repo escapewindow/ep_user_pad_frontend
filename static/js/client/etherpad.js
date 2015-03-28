@@ -282,7 +282,7 @@ $(document).ready(function() {
 		'lang="en" placeholder="E-mail address(es)" ';
 //		console.log(selectedUserVal);
    		if(!selectedUserVal == "")
-			value += 'value="'+ selectedUserVal + '"';
+			value += 'value="'+ selectedUserVal.toLowerCase() + '"';
 		value += 'id="selectedUsers" class="marginRight" longInput><button id="invitebtn" type="submit">Add User</button><span lang="en" class="inviteInfo"'+
 				 '>If there are more than one, separate with ;</span></form></div><h3 lang="en">Manage User</h3>';
 		if(users.length == 0){
@@ -349,7 +349,7 @@ $(document).ready(function() {
    			e.preventDefault();
    			var data = {};
 			getBaseURL(1,function(baseurl){
-	   			var users = $("#selectedUsers").val();
+	   			var users = $("#selectedUsers").val().toLowerCase();
 	   			users = users.split(';');
 				url = baseurl;
 				data.users = users;
@@ -1187,7 +1187,7 @@ $(document).ready(function() {
 			   			e.preventDefault();
 			   			var data = {};
 						getBaseURL(1,function(baseurl){
-				   			var users = $("#selectedUsers").val();
+				   			var users = $("#selectedUsers").val().toLowerCase();
 				   			users = users.split(';');
 							url = baseurl;
 							data.users = users;
