@@ -18,11 +18,9 @@ limitations under the License. */
  */
 
 var getBaseURL = function(slice,cb){
-	var  loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
-			: 80)
-			: loc.port, url = loc.protocol + "//"
-			+ loc.hostname +":"+ loc.port, pathComponents = location.pathname
-			.split('/'),
+	var loc = document.location,
+		url = "https://" + loc.hostname,
+        pathComponents = location.pathname.split('/'),
 	// Strip admin/plugins
 	baseURL = pathComponents.slice(0,
 			pathComponents.length - slice).join('/')

@@ -46,7 +46,7 @@ limitations under the License. -->
     		 				<li><a href="#" lang="en" id = "logout">Logout</a></li>
     		 			</ul>
 	    		 	</nav>
-    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">  
+    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">
     		 	</div>
     		 </header>
        		 <div id="main">
@@ -67,7 +67,7 @@ limitations under the License. -->
 		       		 			<img src="./static/plugins/ep_user_pad_frontend/static/images/users-cyan-32.png" class="headlineImage" alt="Register"></img><h1 lang="en">Open Private Groups</h1>
 		       		 		</div>
 		       		 		<h4 lang="en">Manage your Groups</h4>
-		       		 		<%if (groups.length > 0) {%> 
+		       		 		<%if (groups.length > 0) {%>
 		       		 			<form style="margin-bottom:5px"><input  type="text" id="search" placeholder="Search"></input></form>
 		       		 			<div class="tableview" style="height: 157px; overflow: hidden">
 								<table>
@@ -100,8 +100,8 @@ limitations under the License. -->
 								</div>
 								<div class="navigationInfo"><span id="previousPage"><<</span> <span id="currentPage"></span> to <span id="currentPageCount"></span> of <span id="pageCount"></span> Groups <span id="nextPage">>></span></div>
 		       		 		<%} else {%>
-		       		 			<h4 class="red" lang="en">You are in no Group at the moment.</h4>	
-	       		 			<%}%>	
+		       		 			<h4 class="red" lang="en">You are in no Group at the moment.</h4>
+	       		 			<%}%>
 		       		 	</div>
 	       		 	</div>
 	       		 	<div class="rightArea">
@@ -119,28 +119,26 @@ limitations under the License. -->
     		$(document).ready(function(){
 				$('#logout').click(function(e){
     				e.preventDefault();
-    			    
+
     				var data = {};
-    				var loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
-    						: 80)
-    						: loc.port, url = loc.protocol + "//"
-    						+ loc.hostname + ":" + port + "/";
-    				
+    				var loc = document.location,
+  						url = "https://" + loc.hostname + "/";
+
     				data.location = url;
     				$.ajax({
     					type: 'POST',
     					data: JSON.stringify(data),
     					contentType: 'application/json',
-    					url: url + 'logout',	
+    					url: url + 'logout',
     					success: function(data) {
-    						window.location = "../index.html";	
+    						window.location = "../index.html";
     					},
     					error: function (xhr, ajaxOptions, thrownError) {
     						console.log(thrownError);
     					}
     				});
 				});
-				
+
 	   			$(".delete").click(function(){
 	   				console.log('dfkld');
     				$("#wrapper").append('<div id="overlay"></div>');
@@ -154,7 +152,7 @@ limitations under the License. -->
     						'</div></div>');
     				$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
 
-    			
+
     				$(".close").click(function(){
     					$("#overlay").remove();
     					$("#lightBox").remove();
@@ -164,7 +162,7 @@ limitations under the License. -->
     		   			$("#overlay").remove();
     		   			$("#lightBox").remove();
     		   		});
-    		   		
+
     		   	 	$("#deleteGroup").click(function(){
 		 		  	    var data = {};
 		 		  	    getBaseURL(1,function(baseurl){
@@ -177,13 +175,13 @@ limitations under the License. -->
 		 		  				type: 'POST',
 		 		  				data: JSON.stringify(data),
 		 		  				contentType: 'application/json',
-		 		  				url: url + 'deleteGroup',	
+		 		  				url: url + 'deleteGroup',
 		 		  				success: function(data) {
 		 		  						if(data.success){
-		 		  							window.location.href = loc;	
+		 		  							window.location.href = loc;
 		 		  						}else{
 		 		  							console.log(data.error);
-		 		  						}	
+		 		  						}
 		 		  				},
 		 		  				error: function (xhr, ajaxOptions, thrownError) {
 		 		  					console.log(thrownError);
@@ -191,7 +189,7 @@ limitations under the License. -->
 		 		  			});
 	 		  	    	});
  		  	    	});
-    			}); 
+    			});
     		});
     	</script>
     	</div>

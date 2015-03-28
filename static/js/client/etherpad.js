@@ -14,21 +14,19 @@ limitations under the License. */
 
 var setPw = function(groupId, padName, Password){
 //	console.log(groupId);
-	
-	
+
+
 };
 
 var getBaseURL = function(slice,cb){
-	var  loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
-			: 80)
-			: loc.port, url = loc.protocol + "//"
-			+ loc.hostname +":"+ loc.port, pathComponents = location.pathname
-			.split('/'),
+	var loc = document.location,
+		url = "https://" + loc.hostname,
+        pathComponents = location.pathname.split('/'),
 	// Strip admin/plugins
 	baseURL = pathComponents.slice(0,
 			pathComponents.length - slice).join('/')
 			+ '/';
-	
+
 	url = url + baseURL;
 //	console.log(">>>>>");
 //	console.log(url);
@@ -48,9 +46,9 @@ function post(data,url , cb){
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json',
-			url: url,	
+			url: url,
 			success: function(data) {
-//				console.log('success');	
+//				console.log('success');
 				cb(data);
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -60,7 +58,7 @@ function post(data,url , cb){
 				//console.log(thrownError);
 				cb(null);
 			}
-	});	
+	});
 };
 
 function getSlice(cb){
@@ -80,10 +78,10 @@ $(document).ready(function() {
 //	console.log("---------------READY FUNCTION CALLED");
 	/*
 	 * User Profile
-	 * 
+	 *
 	 */
-	
-	
+
+
 	// when the user name is clicked, the lightbox with the profile data appears
 	$("#userProfile").click(function() {
 		getSlice(function(slice){
@@ -107,19 +105,19 @@ $(document).ready(function() {
     						'longInput smallMarginBottom"></div><button type="submit" lang="en" class="marginBottom">Change</button></form>'+
     						'<h3 lang="en" class="clearMargin">Delete Account & Data</h3><span lang="en" class="deleteInfo">'+
     						'Deletes all your Groups and Pads</span><button id="deleteData">Delete</button></div></div></div>');
-					
+
 					$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-			    	
-			    	// click-event for the closing of the lightBox		
+
+			    	// click-event for the closing of the lightBox
 			    	$(".close").click(function(){
 			    		$("#overlay").remove();
 			   			$("#lightBox").remove();
 			   		});
-			    	
-			    	// confirmation for delete data			
+
+			    	// confirmation for delete data
 			   		$("#deleteData").click(function() {
 			    		$("#lightBox").remove();
-			    				
+
 						//$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"></span></div><div id="lightBoxMain"><div class="headline"><img src="images/close-red-32.png" class="headlineImage" alt="Delete"><h1 lang="en" class="red">Delete not possible</h1></div><div class="content"><p>Delete not possible, because you have groups where you are owner.<br>Change ownership!</p></div></div></div>');
 			    		$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close">'+
 			    							'<img src="./../../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png">'+
@@ -129,7 +127,7 @@ $(document).ready(function() {
 			    							'class="red">Delete all your groups and pads</h1></div><div class="content"><button id="deleteBtn" lang="en"'+
 			    							'class="marginRight">Delete</button><button id="cancelBtn" lang="en">Cancel</button></div></div></div>');
 			    		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-			    		
+
 			    		$("#deleteBtn").click(function(e){
 			    			e.preventDefault();
 			        		getSlice(function(slice){
@@ -147,24 +145,24 @@ $(document).ready(function() {
 			        				});
 			        			});
 			        		});
-			    			
+
 			    		});
-			    		
+
 			    		$("#cancelBtn").click(function(){
 			    			$("#overlay").remove();
 			       			$("#lightBox").remove();
 			    		});
-			    		
-			    		// click-event for the closing of the lightBox		
+
+			    		// click-event for the closing of the lightBox
 			    		$(".close").click(function(){
 			    			$("#overlay").remove();
 			    			$("#lightBox").remove();
 			    		});
-			    		
+
 
 			   		});
 		        	// validation of the login
-		        	// TODO: correct reaction on the validation			
+		        	// TODO: correct reaction on the validation
 		        	$("#formUsername").submit(function(e) {
 		        		e.preventDefault();
 		        		validate("#formUsername");
@@ -190,9 +188,9 @@ $(document).ready(function() {
 
 
 		       		});
-		        	
+
 		        	// validation of the login
-		        	// TODO: correct reaction on the validation			
+		        	// TODO: correct reaction on the validation
 		        	$("#formUseremail").submit(function(e) {
 		        		e.preventDefault();
 		        		validate("#formUseremail");
@@ -210,12 +208,12 @@ $(document).ready(function() {
 		        					}
 		        				});
 		        			});
-		        			
+
 		        		});
 		        	});
-		        	
+
 		        	// validation of the login
-		       		// TODO: correct reaction on the validation			
+		       		// TODO: correct reaction on the validation
 		        	$("#formUserpassword").submit(function(e) {
 		        		e.preventDefault();
 		        		validate("#formUserpassword");
@@ -239,7 +237,7 @@ $(document).ready(function() {
 		            					}else{
 		            						if(!$("#newRepPW").next().hasClass("errorRight")) {
 		            							$("#newRepPW").parent().append('<div class="errorRightLong"><span class="arrowRight"></span><span lang="en">'+ data.error + '</span></div>');
-												$(".errorRightLong").delay(2000).fadeOut(1000);		            							
+												$(".errorRightLong").delay(2000).fadeOut(1000);
 		            						}
 		            						//console.log(data.error);
 		            					}
@@ -251,10 +249,10 @@ $(document).ready(function() {
 				});
 			});
    		});
-   	}); 
-    
+   	});
+
     // Validate function, checks if the input field is empty
-    // @tag: name of the tag			
+    // @tag: name of the tag
    	function validate(tag) {
    		$(tag + " input").each(function(){
 			if($(this).val().length < 1) {
@@ -268,14 +266,14 @@ $(document).ready(function() {
 		});
 		//return false;
 	}
-	
+
 	/*
 	 * Groups
-	 * 
+	 *
 	 */
-   	
 
-   	
+
+
    	function createUserManagement(users, selectedUserVal,groupID, cb){
    		var value = "";
    		value += '<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"'+
@@ -290,8 +288,8 @@ $(document).ready(function() {
 		if(users.length == 0){
 			value += '<h4 class="red" lang="en">No user in this group.</h4>';
 		} else {
-			value += '<form style="margin-bottom:5px"><input type="text" id="searchU" placeholder="Search"></form><div class="tableview" style="height: 157px; overflow: hidden"><table>';	
-			
+			value += '<form style="margin-bottom:5px"><input type="text" id="searchU" placeholder="Search"></form><div class="tableview" style="height: 157px; overflow: hidden"><table>';
+
 			for (var i = 0; i < users.length; i++) {
 				if(!(i%2 ==1)){
 					if(users[i].notRegistered){
@@ -307,7 +305,7 @@ $(document).ready(function() {
 					}else if(users[i].invited){
 						value += '<tr  class="grey visible" id="User' + users[i].userID + '">'+
 									'<td class="first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].name + ' <span class="smallFont"> (Invited)</span></span></td>' +
-									'<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';		 
+									'<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else{
 						value += '<tr  class="odd visible" id="User' + users[i].userID + '">'+
 									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
@@ -328,7 +326,7 @@ $(document).ready(function() {
 					}else if(users[i].invited){
 						value += '<tr  class="grey visible" id="User' + users[i].userID + '>'+
 									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].name + ' <span class="smallFont"> (Invited)</span></span></td>' +
-									'<td class="last right" id="options" data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';		 
+									'<td class="last right" id="options" data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else{
 						value += '<tr  class="visible" id="User' + users[i].userID + '">'+
 									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
@@ -336,8 +334,8 @@ $(document).ready(function() {
 					}
 						value += '</tr>';
 				}
-				
-			
+
+
 			}
 			value += '</table></div><div class="navigationInfo"><span id="previousPageU"><<</span> <span id="currentPageU"></span> to <span id="currentPageCountU"></span> of <span id="pageCountU"></span> Users <span id="nextPageU">>></span></div>';
 		}
@@ -345,7 +343,7 @@ $(document).ready(function() {
 //		console.log(value);
 		cb(value);
    	};
-   	
+
    	function submitHandler(){
    		$("#selUsersForm").submit(function(e){
    			e.preventDefault();
@@ -384,23 +382,23 @@ $(document).ready(function() {
 					}
 				});
 			});
-   			
-   			
+
+
    		});
-   		
-   		
+
+
    	};
-   	
+
     function  handler2 (){
    		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-   		
+
    		$(".close").click(function(){
    			first = true;
    			document.location.reload();
 			$("#overlay").remove();
 			$("#lightBox").remove();
 		});
-			
+
 		$(".options").click(function(){
 //			console.log($(this).parent().parent().find('#userEmail').data('mail'));
 			//console.log();
@@ -421,7 +419,7 @@ $(document).ready(function() {
 				}else if($('#Gruppe' + $(this).data('groupid')).data('role') == 2){
 					$(this).parent().append('<div id="overlayOptions" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/arrow.png"'+
 							'class="arrow"><ul><li><a href="mailto:'+$(this).parent().parent().find('#userEmail').data('mail') +'" id="mail"><img src="./static/plugins/ep_user_pad_frontend/static/images/mail-16.png" '+
-							'alt="Send a Mail" class="smallIcon" >Mail</a></li></ul></div></div>');					
+							'alt="Send a Mail" class="smallIcon" >Mail</a></li></ul></div></div>');
 				}
 				$("#reinvite").click(function(e){
 					e.preventDefault();
@@ -445,7 +443,7 @@ $(document).ready(function() {
 						});
 					});
 				});
-				
+
 				$("#deleteNotRegUser").click(function(e){
 					e.preventDefault();
 					var username = $(this).data('username');
@@ -467,16 +465,16 @@ $(document).ready(function() {
 						});
 					});
 				});
-				
-				
-				
+
+
+
 				$("#makeOwner").click(function(e){
 					e.preventDefault();
 					var userID = $(this).data('userid');
 					var userFullName = $(this).parent().parent().parent().parent().parent().find('#userEmail').html();
 					var groupID = $(this).parent().parent().parent().parent().find('#overlayOptions').data('groupid');
 					$("#lightBox").remove();
-    				
+
 					//$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"></span></div><div id="lightBoxMain"><div class="headline"><img src="images/close-red-32.png" class="headlineImage" alt="Delete"><h1 lang="en" class="red">Delete not possible</h1></div><div class="content"><p>Delete not possible, because you have groups where you are owner.<br>Change ownership!</p></div></div></div>');
 		    		$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close">'+
 		    							'<img src="./../../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png">'+
@@ -484,7 +482,7 @@ $(document).ready(function() {
 		    							'</h1>Note: If you make the user \'' + userFullName + '\' to the owner of this group, you loose the possibility to delete the group, its users and its pads. Are you sure?</div><div class="content"><button id="makeOwnBtn" lang="en"'+
 		    							'class="marginRight">Yes</button><button id="cancelBtn" lang="en">Cancel</button></div></div></div>');
 		    		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-		    		
+
 		    		$("#makeOwnBtn").click(function(e){
 						e.preventDefault();
 						var data = {};
@@ -503,23 +501,23 @@ $(document).ready(function() {
 								}
 							});
 						});
-		    			
+
 		    		});
-		    		
+
 		    		$("#cancelBtn").click(function(){
 		    			$("#overlay").remove();
 		       			$("#lightBox").remove();
 		       			document.location.reload();
 		    		});
-		    		
-		    		// click-event for the closing of the lightBox		
+
+		    		// click-event for the closing of the lightBox
 		    		$(".close").click(function(){
 		    			$("#overlay").remove();
 		    			$("#lightBox").remove();
 		    			document.location.reload();
 		    		});
 				});
-				
+
 				$("#deleteUser").click(function(e){
 					e.preventDefault();
 					var userID = $(this).data('userid');
@@ -531,7 +529,7 @@ $(document).ready(function() {
 						data.userID= userID;
 						data.groupID = groupID;
 						post(data, url+'deleteUserFromGroup' ,function(data){
-							
+
 							if(data && data.success){
 								document.location.reload();
 							}else{
@@ -542,7 +540,7 @@ $(document).ready(function() {
 						});
 					});
 				});
-				
+
 				$("#reinvite").click(function(e){
 					e.preventDefault();
 					//var userID = $(this).data('title');
@@ -550,22 +548,22 @@ $(document).ready(function() {
 //					console.log(userID);
 //					console.log(groupID);
 				});
-				
+
 			} else {
 				$("#overlayOptions").remove();
 			}
-   		}); 
-   			
+   		});
+
    		$(document).click(function(e){
    			if(!$(".options").is(e.target)) {
    				$("#overlayOptions").remove();
    			}
-   		});    		
+   		});
    	};
-   	
+
    	function handler(){
-		
-				
+
+
 		$('#searchU').keyup(function(){
 		/// search
     	$(".content table tr").each(function(){
@@ -577,7 +575,7 @@ $(document).ready(function() {
     			$(this).hide();
     		}
     	});
-    				
+
     	// set color of the rows new after the search results are showen
     	i = 0;
     	$(".content table tr").each(function(){
@@ -589,16 +587,16 @@ $(document).ready(function() {
     			i++;
     		}
     	});
-    		
+
     	if($('#searchU').val().length == 0) {
-			buildPage(0);	
+			buildPage(0);
 		}
-		
+
 		initPaging(6);
 		/*e.preventDefault();
 //		console.log('enter');
 		var data = {};
-			
+
 		var url;
 		getBaseURL(1,function(baseurl){
 			url = baseurl;
@@ -609,27 +607,27 @@ $(document).ready(function() {
 				$(document).ready();
 			});
 		});*/
-		
+
 	});
-	
+
 	/*
 	 * Pageing
 	 *
 	 */
-	 
+
 	rowsize = 6;
-    			
+
     initPaging(rowsize);
-    			
+
     // jump to the next page
     $("#nextPageU").click(function(){
     	page++;
     	buildPage(page);
-		
+
     	if($(".content table tr.visible").length <= (page+1)*rowsize){
     		$("#nextPageU").hide();
     	}
-    	
+
     	$("#previousPageU").show();
     	if($(".content table tr.visible").length > rowsize+page*rowsize){
     		updatePaging(page*rowsize+1,rowsize+page*rowsize)
@@ -637,20 +635,20 @@ $(document).ready(function() {
     		updatePaging(page*rowsize+1,$(".content table tr.visible").length)
     	}
     });
-    			
+
     // jump to the previous page
     $("#previousPageU").click(function(){
     	page--;
     	buildPage(page);
-		
+
     	if(page == 0) {
     		$("#previousPageU").hide();
     	}
-   		
+
     	$("#nextPageU").show();
     	updatePaging(page*rowsize+1,rowsize+page*rowsize)
     });
-	
+
 	/*
 	 * Build the Page depending on the pageview number
 	 */
@@ -665,7 +663,7 @@ $(document).ready(function() {
     		i++;
     	});
 	}
-			
+
 	/*
 	 * Update the value for the Paging
 	 */
@@ -673,7 +671,7 @@ $(document).ready(function() {
 		$("#currentPageU").html(currentPage);
 		$("#currentPageCountU").html(currentPageCount);
 	}
-	
+
 	/*
 	 * Initalize the Paging
 	 */
@@ -682,21 +680,21 @@ $(document).ready(function() {
 		//console.log(rowsize);
 		page = 0;
 		$("#nextPageU").hide();
-		$("#previousPageU").hide();	
-		
+		$("#previousPageU").hide();
+
 		// set the correct start value for the pagging
 		if($(".content table tr.visible").length > rowsize){
 			$("#nextPageU").show();
 			updatePaging(1,rowsize)
 		} else if($(".content table tr.visible").length == 0){
 			updatePaging(0,$(".content table tr.visible").length)
-		} else {		
+		} else {
 			updatePaging(1,$(".content table tr.visible").length)
 		}
-				
+
 		// build first page
 		buildPage(page);
-				
+
 		// set the value for the number of rows
 		$("#pageCountU").html($(".content table tr.visible").length);
 	}
@@ -712,7 +710,7 @@ $(document).ready(function() {
 					data.location = url;
 					var groupID = $("#lightBoxMain").data('groupid');
 					var selectUsers = $("#selectedUsers").val();
-					
+
 					data.groupID = groupID;
 					post(data, url+'userSearchTerm' ,function(data){
 						if(data.success){
@@ -735,11 +733,11 @@ $(document).ready(function() {
 			}else{
 //				console.log('not enter');
 			}
-		});*/ 		
-   		
+		});*/
+
    	};
-		
-   	
+
+
 	$(".groupDetails").click(function(e){
 		if(first){
 //			console.log('clicked the groupDetails');
@@ -776,13 +774,13 @@ $(document).ready(function() {
 			submitHandler();
 		}
     });
-    
+
     /*
      * Group
-     * 
+     *
      */
-	
-	
+
+
 //    $(".unlock").click(function(){
 //    	$("#wrapper").append('<div id="overlay"></div>');
 //   		$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain">'+
@@ -792,14 +790,14 @@ $(document).ready(function() {
 //   				'"><input id="passwordval" type="password" lang="en" placeholder="Password"'+
 //   				'class="marginRight"><button  >'+
 //   				'Set</button></form></div></div></div>');
-//   		
+//
 //   		$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-//   		
+//
 //  		$(".close").click(function(){
 //   			$("#overlay").remove();
 //   			$("#lightBox").remove();
 //    	});
-//  		
+//
 //  	    $("#unlockPadSubmit").submit(function(e){
 //  	    	e.preventDefault();
 //  	    	var data = {};
@@ -807,7 +805,7 @@ $(document).ready(function() {
 //  			data.padName = $(this).attr('title');
 //  			data.pw = $("#passwordval").val();
 ////  			console.log(data);
-//  	    	
+//
 //			var url;
 //			getBaseURL(2,function(baseurl){
 //				url = baseurl;
@@ -817,17 +815,17 @@ $(document).ready(function() {
 //					if(data.success){
 ////							console.log('here!!');
 //							window.location.reload();
-//							
+//
 //						}else{
 //							console.log(data.error);
-//					}	
+//					}
 //				});
 //			});
 //  	    });
 //    });
-//    
 //
-//		
+//
+//
 //   	$(".lock").click(function(){
 //   		$("#wrapper").append('<div id="overlay"></div>');
 //   		$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div'+
@@ -838,18 +836,18 @@ $(document).ready(function() {
 //   				'">Delete</button><button '+
 //   				'lang="en" id = "cancelUnlock">Cancel</button></div></div></div>');
 //    	$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
-//   		
+//
 //   		$(".close").click(function(){
 //   			$("#overlay").remove();
 //   			$("#lightBox").remove();
 //   		});
-//   		
+//
 //   		$("#cancelUnlock").click(function(){
 ////   			console.log("clicked");
 //   			$("#overlay").remove();
 //   			$("#lightBox").remove();
 //   		});
-//   		
+//
 //  	    $("#lockPadButton").click(function(){
 ////  	    	console.log('clicked here');
 //  	    	var data = {};
@@ -864,20 +862,20 @@ $(document).ready(function() {
 ////				console.log(url+'setPassword');
 //				post(data, url+'setPassword' ,function(data){
 //					if(data.success){
-//  						window.location.reload();	
+//  						window.location.reload();
 //  					}else{
 //  						console.log(data.error);
-//  					}	
+//  					}
 //				});
 //			});
 //  	    });
 //   	});
-   	
+
    	/*
    	 * Minimize and Maximize of the Header, groupNav und Footer Element in Pad View
-   	 * 
+   	 *
    	 */
-   	
+
    	// minimize the elements
 	$("#minimize").click(function(){
     	$('header').delay(0).slideUp(800);
@@ -885,37 +883,37 @@ $(document).ready(function() {
     	$('footer').delay(0).slideUp(800);
     	$('#minimize').delay(0).slideUp(800);
     	$('#maximize').delay(1200).slideDown(800);
-    	
+
     	$("#iframePad").animate({height: $(window).height()-4}, 800);
 		$("#iframePad").css("display","block");
    	});
-       	
-   	// maximize the elements		
+
+   	// maximize the elements
   	$("#maximize").click(function(){
    		$('header').delay(300).slideDown(800);
    		$('#groupNav').delay(300).slideDown(800);
    		$('footer').delay(300).slideDown(800);
    		$('#minimize').delay(1500).slideDown(800);
     	$('#maximize').delay(0).slideUp(800);
-    	
+
     	$("#iframePad").delay(300).animate({height: $(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8}, 800);
    	});
-   	
-   	// adjust the height of the iframe 			
+
+   	// adjust the height of the iframe
     $("#iframePad").css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8);
     $(window).resize(function() {
     	if($("header").css("display") != "none")
    			$("#iframePad").css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-8);
-   		else 
+   		else
    			$("#iframePad").css("height",$(window).height()-4);
     });
-    			
+
    // adjust the height of main > inside for the iframe (border of 4px )
    $("#iframePad").parent().css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-4);
    $(window).resize(function() {
    		$("#iframePad").parent().css("height",$(window).height()-$("header").height()-$("#groupNav").height()-$("footer").height()-4);
    });
-  	
+
 	$('#logout').click(function(e){
 		e.preventDefault();
 //	    console.log('logging out');
@@ -935,14 +933,14 @@ $(document).ready(function() {
 						//window.location.reload();
 					}else{
 						console.log("Something went wrong");
-					}	
+					}
 				});
 			});
 		});
 
 
 	});
-	
+
 	$('#search').keyup(function(){
 		/// search
     	$(".inputBlock table tr").each(function(){
@@ -954,7 +952,7 @@ $(document).ready(function() {
     			$(this).hide();
     		}
     	});
-    				
+
     	// set color of the rows new after the search results are showen
     	i = 0;
     	$(".inputBlock table tr").each(function(){
@@ -966,16 +964,16 @@ $(document).ready(function() {
     			i++;
     		}
     	});
-    		
+
     	if($('#search').val().length == 0) {
-			buildPage(0);	
+			buildPage(0);
 		}
-		
+
 		initPaging(rowsize);
 		/*e.preventDefault();
 //		console.log('enter');
 		var data = {};
-			
+
 		var url;
 		getBaseURL(1,function(baseurl){
 			url = baseurl;
@@ -986,27 +984,27 @@ $(document).ready(function() {
 				$(document).ready();
 			});
 		});*/
-		
+
 	});
-	
+
 	/*
 	 * Pageing
 	 *
 	 */
-	 
+
 	rowsize = 6;
-    			
+
     initPaging(rowsize);
-    			
+
     // jump to the next page
     $("#nextPage").click(function(){
     	page++;
     	buildPage(page);
-		
+
     	if($(".inputBlock table tr.visible").length <= (page+1)*rowsize){
     		$("#nextPage").hide();
     	}
-    	
+
     	$("#previousPage").show();
     	if($(".inputBlock table tr.visible").length > rowsize+page*rowsize){
     		updatePaging(page*rowsize+1,rowsize+page*rowsize)
@@ -1014,20 +1012,20 @@ $(document).ready(function() {
     		updatePaging(page*rowsize+1,$(".inputBlock table tr.visible").length)
     	}
     });
-    			
+
     // jump to the previous page
     $("#previousPage").click(function(){
     	page--;
     	buildPage(page);
-		
+
     	if(page == 0) {
     		$("#previousPage").hide();
     	}
-   		
+
     	$("#nextPage").show();
     	updatePaging(page*rowsize+1,rowsize+page*rowsize)
     });
-	
+
 	/*
 	 * Build the Page depending on the pageview number
 	 */
@@ -1042,7 +1040,7 @@ $(document).ready(function() {
     		i++;
     	});
 	}
-			
+
 	/*
 	 * Update the value for the Paging
 	 */
@@ -1050,7 +1048,7 @@ $(document).ready(function() {
 		$("#currentPage").html(currentPage);
 		$("#currentPageCount").html(currentPageCount);
 	}
-	
+
 	/*
 	 * Initalize the Paging
 	 */
@@ -1058,27 +1056,27 @@ $(document).ready(function() {
 		// initalize the paging view
 		page = 0;
 		$("#nextPage").hide();
-		$("#previousPage").hide();	
-		
+		$("#previousPage").hide();
+
 		// set the correct start value for the pagging
 		if($(".inputBlock table tr.visible").length > rowsize){
 			$("#nextPage").show();
 			updatePaging(1,rowsize)
 		} else if($(".inputBlock table tr.visible").length == 0){
 			updatePaging(0,$(".inputBlock table tr.visible").length)
-		} else {		
+		} else {
 			updatePaging(1,$(".inputBlock table tr.visible").length)
 		}
-				
+
 		// build first page
 		buildPage(page);
-				
+
 		// set the value for the number of rows
 		$("#pageCount").html($(".inputBlock table tr.visible").length);
 	}
-	
+
 	$('#searchPads').keypress(function(e){
-		
+
 		if(e.which == 13){
 			e.preventDefault();
 //			console.log('enter');
@@ -1102,7 +1100,7 @@ $(document).ready(function() {
 //			console.log('not enter');
 		}
 	});
-	
+
 	$('#openPublicPad').click(function(e){
 		e.preventDefault();
 		var padname = $('#openPadName').val();
@@ -1114,7 +1112,7 @@ $(document).ready(function() {
 			$(".errorUp").delay(2000).fadeOut(1000);
 		}
 	});
-	
+
 	$('#createPublicPadByName').click(function(e){
 		e.preventDefault();
 		var padname = $('#createPadName').val();
@@ -1125,26 +1123,26 @@ $(document).ready(function() {
 			$(".errorUp").delay(2000).fadeOut(1000);
 		}
 	});
-	
-    function randomPadName() 
+
+    function randomPadName()
     {
         var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         var string_length = 10;
         var randomstring = '';
-        for (var i = 0; i < string_length; i++) 
+        for (var i = 0; i < string_length; i++)
         {
             var rnum = Math.floor(Math.random() * chars.length);
             randomstring += chars.substring(rnum, rnum + 1);
         }
         return randomstring;
     }
-    
+
 	$('#createPublicPadRandomName').click(function(e){
 		e.preventDefault();
 		//console.log('here created');
 		window.location = "public_pad/" + randomPadName();
 	});
-    
+
 	$('#createPrivateGroupForm').submit(function(e){
 		e.preventDefault();
 		var data = {};
@@ -1175,7 +1173,7 @@ $(document).ready(function() {
 					'headlineImage" alt="Login"><h1 lang="en">User Management</h1></div><div class="content"><h3 lang="en">Add User</h3><div id= "wait"><form id = "selUsersForm"><input type="text"'+
 					'lang="en" placeholder="E-mail address(es)" id="selectedUsers" class="marginRight" longInput><button id="invitebtn" type="submit">Add User</button><span lang="en" class="inviteInfo"'+
 					'>If there are more than one, separate with ;</span></form></div>');
-					
+
 			    	$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
 
 			   	   	// click-event for the closing of the lightBox
@@ -1184,7 +1182,7 @@ $(document).ready(function() {
 			   			$("#lightBox").remove();
 			   			window.location.reload();
 			   		});
-			    	
+
 			    	$("#selUsersForm").submit(function(e){
 			   			e.preventDefault();
 			   			var data = {};
@@ -1223,13 +1221,13 @@ $(document).ready(function() {
 							});
 						});
 			    	});
-					
-					
+
+
 				};
 			});
 		});
 	});
-	
+
 	$('#createPrivateGroupPad').click(function(e){
 		e.preventDefault();
 //		console.log('test');
@@ -1256,14 +1254,14 @@ $(document).ready(function() {
 					});
 				}else{
 					window.location = loc;
-				}						
+				}
 			});
 		});
 	});
-	
-	
 
-	
+
+
+
 	$('.padClick').click(function(e){
 		e.preventDefault();
 //		console.log('here we are');
@@ -1287,7 +1285,7 @@ $(document).ready(function() {
 			});
 		});
 	});
-	
+
    	$("#register").click(function(){
    		$("#wrapper").append('<div id="overlay"></div>');
     	$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"><span class="close"><img src="../../static/plugins/ep_user_pad_frontend/static/images/close-cyan-12.png"></span></div><div id="lightBoxMain"><div class="headline"><img src="./../../static/plugins/ep_user_pad_frontend/static/images/user-32.png" class="headlineImage" alt="Register"><h1>Register</h1></div><div class="content">\
@@ -1304,7 +1302,7 @@ $(document).ready(function() {
    			$("#overlay").remove();
    			$("#lightBox").remove();
    		});
-    				
+
 		// validation of the login
     	// TODO: correct reaction on the validation
     	$("#formEtherpadRegister").submit(function(e) {
@@ -1317,13 +1315,13 @@ $(document).ready(function() {
 			data.password = $("#password").val();
 			data.fullname = $("#fullname").val();
 			data.passwordrepeat = $("#passwordrepeat").val();
-			
+
 			data.location = url;
 			$.ajax({
 				type: 'POST',
 				data: JSON.stringify(data),
 				contentType: 'application/json',
-				url: url + 'register',	
+				url: url + 'register',
 				success: function(data) {
 					if(data.success)
 						window.location = "index.html";
@@ -1351,10 +1349,10 @@ $(document).ready(function() {
 			});
     	});
     	});
-    	
+
     });
-	
-	
+
+
 });
 
 

@@ -14,20 +14,18 @@ limitations under the License. */
 
 
 function index(hooks,context,cb){
-	var socket, loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
-			: 80)
-			: loc.port, url = loc.protocol + "//"
-			+ loc.hostname + ":" + port + "/", pathComponents = location.pathname
-			.split('/'),
+	var socket, loc = document.location,
+			url = "https://" + loc.hostname + "/",
+            pathComponents = location.pathname.split('/'),
 	// Strip admin/plugins
 	baseURL = pathComponents.slice(0,
 			pathComponents.length -1).join('/')
 			+ '/', resource = baseURL.substring(1)
-			+ "socket.io";			
+			+ "socket.io";
 	socket = io.connect(url, {resource : resource}).of("/pluginfw/user_pad_frontend_unlogged");
-	
+
 	function handlers(){
-	
+
 //		$('#loginButton').unbind('click').bind('click', function(e){
 //			e.preventDefault();
 //			var username = $("#username").val();
@@ -41,12 +39,12 @@ function index(hooks,context,cb){
 //			});
 //		});
 
-	
+
 	}
 	handlers();
-	
+
 //	var currentGroups = [];
-//	
+//
 //	var sortByIdAsc = function(a,b){
 //		return a.id - b.id;
 //	};
@@ -83,7 +81,7 @@ function index(hooks,context,cb){
 //		    this[name] = wert;
 //		  }
 //	};
-//	
+//
 //
 //	var addGroup = function(id){
 //		var userGroup = {};
@@ -111,7 +109,7 @@ function index(hooks,context,cb){
 //			showGroups(allGroups, sortByNameAsc);
 //		});
 //	};
-//	
+//
 //	var searchAllGroupsNotInUser = function(name){
 //		var list = new Werteliste(document.location.search);
 //		var val_list = {};
@@ -121,7 +119,7 @@ function index(hooks,context,cb){
 //			showGroupsGroupBox(allGroups);
 //		});
 //	};
-//	
+//
 //	function handlers(){
 //		$('.sort.up').unbind('click').click(function(e) {
 //    		var row = $(e.target).closest("th");
@@ -144,13 +142,13 @@ function index(hooks,context,cb){
 //      		}
 //    	});
 //       	$('#addGroupButton').unbind('click').bind('click', function(e){
-//			e.preventDefault(); 
+//			e.preventDefault();
 //			$("#GroupBox").css('display', 'block');
 //			$("#fade").css('display', 'block');
 //			searchAllGroupsNotInUser('');
 //		});
 //
-//    	
+//
 //	}
 //	handlers();
 //
@@ -170,14 +168,14 @@ function index(hooks,context,cb){
 //	       		usergroup.groupid = id;
 //	    		var list = new Werteliste(document.location.search);
 //	       		usergroup.userid = list.id;
-//	       		
+//
 //	       		socket.emit("suspend-user-from-group", usergroup, function(){
 //	       			searchAllGroupsOfUser('');
 //	       		});
 //			});
 //			resultList.append(row);
 //		}
-//			
+//
 //	};
 //	var showGroupsGroupBox = function(groups){
 //		var widget = $(".whitebox-result-div");
@@ -210,7 +208,7 @@ function index(hooks,context,cb){
 
 exports.documentReady = function(hooks, context, cb){
 	    //console.log(context);
-	    
+
 		if(context == "/user_pad_frontend/index")
 			index(hooks, context,cb);
 //		else if(context == "admin/user_pad_group")
@@ -222,7 +220,7 @@ exports.documentReady = function(hooks, context, cb){
 		else
 			return;
 
-        
+
 };
 
 

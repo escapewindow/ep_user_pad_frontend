@@ -47,7 +47,7 @@ limitations under the License. -->
     		 				<li><a href="#" lang="en" id = "logout">Logout</a></li>
     		 			</ul>
 	    		 	</nav>
-				<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">  
+				<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">
     		 	</div>
     		 </header>
     		 <div id="groupNav">
@@ -60,8 +60,8 @@ limitations under the License. -->
    		 				</ul>
    		 			</nav>
    		 			<div style="clear: both"></div>
-    		 	</div>	
-    		 </div>    
+    		 	</div>
+    		 </div>
        		 <div id="main">
        		 	<div class="inside">
        		 		<div class="headlineGroup">
@@ -96,7 +96,7 @@ limitations under the License. -->
 		       		 						<!--<td><img title="<%=pads[i-1].name%>" id = "<%= id %>" src="./../static/plugins/ep_user_pad_frontend/static/images/<% if(pads[i-1].isProtected) { %>lock-16.png<% }else{ %>unlock-16.png<% } %>" class="<% if(pads[i-1].isProtected) { %>lock<% }else{ %>unlock<% } %>"></td> -->
 		       		 						<% if (isowner) {%>
 		       		 							<td title="Delete Pad" class="last"><img data-padname="<%=pads[i-1].name%>" data-groupid = "<%= groupid %>" src="./../static/plugins/ep_user_pad_frontend/static/images/close-red-16.png" class="delete"></td>
-											<%}%>		       		 					
+											<%}%>
 		       		 					</tr>
 		       		 				<%} else {%>
 		       		 					<tr class="visible" id="Pad<%=i%>">
@@ -108,12 +108,12 @@ limitations under the License. -->
 		       		 						<%}%>
 		       		 					</tr>
 		       		 				<%}%>
-		       		 			<% } %>	
+		       		 			<% } %>
 		       		 		</table>
 							</div>
 							<div class="navigationInfo"><span id="previousPage"><<</span> <span id="currentPage"></span> to <span id="currentPageCount"></span> of <span id="pageCount"></span> Pads <span id="nextPage">>></span></div>
 		       		 		<%} else {%>
-		       		 			<h4 class="red" lang="en">There are no Pads in this group at the moment.</h4>	
+		       		 			<h4 class="red" lang="en">There are no Pads in this group at the moment.</h4>
 		       		 		<% } %>
 		       		 	</div>
 	       		 	</div>
@@ -130,16 +130,14 @@ limitations under the License. -->
        		 </footer>
        		 <script>
        		var getBaseURL = function(slice,cb){
-       			var  loc = document.location, port = loc.port == "" ? (loc.protocol == "https:" ? 443
-       					: 80)
-       					: loc.port, url = loc.protocol + "//"
-       					+ loc.hostname +":"+ loc.port, pathComponents = location.pathname
-       					.split('/'),
+       			var loc = document.location,
+                    url = "https://" + loc.hostname,
+                    pathComponents = location.pathname.split('/'),
        			// Strip admin/plugins
        			baseURL = pathComponents.slice(0,
        					pathComponents.length - slice).join('/')
        					+ '/';
-       			
+
        			url = url + baseURL;
        			console.log(">>>>>");
        			console.log(url);
@@ -147,7 +145,7 @@ limitations under the License. -->
        			cb(url);
        		};
 
-    		$(document).ready(function(){  			
+    		$(document).ready(function(){
     			$(".delete").click(function(){
     				$("#wrapper").append('<div id="overlay"></div>');
     				$("#wrapper").append('<div id="lightBox"><div id="lightBoxHeader"'+
@@ -162,7 +160,7 @@ limitations under the License. -->
     						'Delete</button><button lang="en" id = "cancelDelete">Cancel</button></div></div></div>');
     				$("#lightBox").css("margin-top",-$("#lightBox").height()/2);
 
-    			
+
     				$(".close").click(function(){
     					$("#overlay").remove();
     					$("#lightBox").remove();
@@ -172,7 +170,7 @@ limitations under the License. -->
     		   			$("#overlay").remove();
     		   			$("#lightBox").remove();
     		   		});
-    		   		
+
     		   	 $("#deletePadButton").click(function(){
     		  	    	console.log('clicked delete here');
     		  	    	var data = {};
@@ -182,19 +180,19 @@ limitations under the License. -->
 	    		  	    	data.groupId = $("#deletePadButton").data('groupid');
 	    		  			data.padName = $("#deletePadButton").data('padname');
 	    		  			console.log(data);
-	    		  	    	
+
 
 	    		  			$.ajax({
 	    		  				type: 'POST',
 	    		  				data: JSON.stringify(data),
 	    		  				contentType: 'application/json',
-	    		  				url: url + 'deletePad',	
+	    		  				url: url + 'deletePad',
 	    		  				success: function(data) {
 	    		  						if(data.success){
 	    		  							window.location = loc;
 	    		  						}else{
 	    		  							console.log(data.error);
-	    		  						}	
+	    		  						}
 	    		  				},
 	    		  				error: function (xhr, ajaxOptions, thrownError) {
 	    		  					console.log(thrownError);
@@ -204,8 +202,8 @@ limitations under the License. -->
     		  	    });
     			});
 
-    		    	
-    			
+
+
 			});
 
     	</script>
