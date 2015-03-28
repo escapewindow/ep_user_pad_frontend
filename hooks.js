@@ -448,7 +448,7 @@ exports.expressCreateServer = function (hook_name, args, cb) {
             return false; // break execution early
         }
 
-        var Ergebnis = user.email.toString().match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}/);
+        var Ergebnis = user.email.toString().match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}/).toLowerCase();
         if (Ergebnis == null) {
             cb(false, NO_VALID_MAIL);
             return false; // break execution early

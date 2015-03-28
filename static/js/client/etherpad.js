@@ -294,42 +294,42 @@ $(document).ready(function() {
 				if(!(i%2 ==1)){
 					if(users[i].notRegistered){
 						value+='<tr id="User' + users[i].userID + '" class="grey visible">\
-							<td class="first"><span id="userEmail" data-toinvite="1" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'">' + users[i].name + ' <span class="smallFont"> (Invited)</span></span></td>\
+							<td class="first"><span id="userEmail" data-toinvite="1" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'">' + users[i].name.toLowerCase() + ' <span class="smallFont"> (Invited)</span></span></td>\
 							<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class="options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"></td>\
 						</tr>';
 					}
 					else if(users[i].Role == 1){
 						value += '<tr class="odd visible" id="User' + users[i].userID + '" >'+
-									'<td class = "first"><span id="userEmail"  data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + ' <span class="smallFont">(Owner)</span></span></td>' +
+									'<td class = "first"><span id="userEmail"  data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + ' <span class="smallFont">(Owner)</span></span></td>' +
 									'<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else if(users[i].invited){
 						value += '<tr  class="grey visible" id="User' + users[i].userID + '">'+
-									'<td class="first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].name + ' <span class="smallFont"> (Invited)</span></span></td>' +
+									'<td class="first"><span id="userEmail" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].name.toLowerCase() + ' <span class="smallFont"> (Invited)</span></span></td>' +
 									'<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else{
 						value += '<tr  class="odd visible" id="User' + users[i].userID + '">'+
-									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
+									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
 									'<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" data-groupid="'+groupID+'" class = "options" data-userid="'+ users[i].userID +'" ></td>';
 					}
 					value += '</tr>';
 				}else{
 					if(users[i].notRegistered){
 						value+='<tr id="User' + users[i].userID + '" class="grey visible" >\
-							<td class="first"><span id="userEmail" data-toinvite="1" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'">' + users[i].name + '<span class="smallFont"> (Invited)</span></span></td>\
+							<td class="first"><span id="userEmail" data-toinvite="1" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'">' + users[i].name.toLowerCase() + '<span class="smallFont"> (Invited)</span></span></td>\
 							<td class="last right" id="options"  data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class="options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"></td>\
 						</tr>';
 					}
 					else if(users[i].Role == 1){
 						value += '<tr  class="visible" id="User' + users[i].userID + '">'+
-									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + ' <span class="smallFont">(Owner)</span></span></td>' +
+									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + ' <span class="smallFont">(Owner)</span></span></td>' +
 									'<td class="last right" id="options" data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else if(users[i].invited){
 						value += '<tr  class="grey visible" id="User' + users[i].userID + '>'+
-									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].name + ' <span class="smallFont"> (Invited)</span></span></td>' +
+									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].name.toLowerCase() + ' <span class="smallFont"> (Invited)</span></span></td>' +
 									'<td class="last right" id="options" data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}else{
 						value += '<tr  class="visible" id="User' + users[i].userID + '">'+
-									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
+									'<td class = "first"><span id="userEmail" data-mail="'+users[i].name.toLowerCase()+'" data-userid="'+users[i].userID+'" >' + users[i].FullName + '</span></td>' +
 									'<td class="last right" id="options" data-groupid="'+groupID+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/options-16.png" class = "options" data-groupid="'+groupID+'" data-userid="'+ users[i].userID +'"> </td>';
 					}
 						value += '</tr>';
@@ -406,7 +406,7 @@ $(document).ready(function() {
 				if($(this).parent().parent().find('#userEmail').data('toinvite')){
 					$(this).parent().append('<div id="overlayOptions" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/arrow.png"'+
 							'class="arrow"><ul><li><a href="mailto:'+$(this).parent().parent().find('#userEmail').data('mail') +'" id="mail"><img src="./static/plugins/ep_user_pad_frontend/static/images/mail-16.png" '+
-							'alt="Send a Mail" class="smallIcon" >Mail</a></li><li><a href="" id="reinvite" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'" data-username="'+ $(this).parent().parent().find('#userEmail').data('mail')+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/backarrow-16.png" class="smallIcon">Reinvite</a></li><li><a href="" id="deleteNotRegUser" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'" data-username="'+ $(this).parent().parent().find('#userEmail').data('mail') +'"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-red-16.png"'+
+							'alt="Send a Mail" class="smallIcon" >Mail</a></li><li><a href="" id="reinvite" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'" data-username="'+ $(this).parent().parent().find('#userEmail').data('mail').toLowerCase()+'"><img src="./static/plugins/ep_user_pad_frontend/static/images/backarrow-16.png" class="smallIcon">Reinvite</a></li><li><a href="" id="deleteNotRegUser" data-groupid="'+$(this).parent().parent().find('#options').data('groupid')+'" data-username="'+ $(this).parent().parent().find('#userEmail').data('mail').toLowerCase() +'"><img src="./static/plugins/ep_user_pad_frontend/static/images/close-red-16.png"'+
 							'alt="Delete User" class="smallIcon" ><span class="red">Delete<span></a></li></ul></div></div>');
 				}
 				else if($('#Gruppe' + $(this).data('groupid')).data('role') == 1){
@@ -423,13 +423,13 @@ $(document).ready(function() {
 				}
 				$("#reinvite").click(function(e){
 					e.preventDefault();
-					var username = $(this).data('username');
+					var username = $(this).data('username').toLowerCase();
 					var groupID = $(this).data('groupid');
 					var data = {};
 					var url;
 					getBaseURL(1,function(baseurl){
 						url = baseurl;
-						data.username= username;
+						data.username= username.toLowerCase();
 						data.groupID = groupID;
 						data.location = url;
 						post(data, url+'reinviteUser' ,function(data){
@@ -446,13 +446,13 @@ $(document).ready(function() {
 
 				$("#deleteNotRegUser").click(function(e){
 					e.preventDefault();
-					var username = $(this).data('username');
+					var username = $(this).data('username').toLowerCase();
 					var groupID = $(this).data('groupid');
 					var data = {};
 					var url;
 					getBaseURL(1,function(baseurl){
 						url = baseurl;
-						data.username= username;
+						data.username= username.toLowerCase();
 						data.groupID = groupID;
 						post(data, url+'deleteNotRegUser' ,function(data){
 							if(data.success){
