@@ -45,13 +45,13 @@ limitations under the License. -->
     		 				<li><a href="#" lang="en" id = "logout">Logout</a></li>
     		 			</ul>
 	    		 	</nav>
-    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">  
+    		 		<img src="./static/plugins/ep_user_pad_frontend/static/images/logo_tug_grey_white-01.png" alt="Etherpad" id="logo">
     		 	</div>
     		 </header>
        		 <div id="main">
        		 	<div class="inside">
-	       		 	<span id="loggedInTitle" lang="en">University Pad</span>
-	       		 	<span id="loggedInSubtitle" lang="en"><br>Work with Pads alone or in groups, public or private.<br> To create a private Pad you first have to create a private Group.</p></span>
+	       		 	<span id="loggedInTitle" lang="en">Etherpad</span>
+	       		 	<span id="loggedInSubtitle" lang="en"><br>Work with Pads alone or in groups, public or private.<br> To create a private Pad you first have to create a private group.</p></span>
 	       		 	<div class="leftArea">
 	       		 		<div class="headline">
 	       		 			<img src="./static/plugins/ep_user_pad_frontend/static/images/pad-32.png" class="headlineImage" alt="Register"><h1 lang="en">Public Pad</h1>
@@ -66,19 +66,19 @@ limitations under the License. -->
 	       		 		<div class="headline">
 	       		 			<img src="./static/plugins/ep_user_pad_frontend/static/images/users-cyan-32.png" class="headlineImage" alt="Register"><h1 lang="en">Private Groups</h1>
 	       		 		</div>
-	       		 		<h4 lang="en">Create new Groups and open your recently used Groups</h4>
+	       		 		<h4 lang="en">Create new groups and open your recently used groups</h4>
 	       		 		<form id="createPrivateGroupForm">
 	       		 			<input type="text" placeholder="Group-Name" id="groupName" autocomplete=off>
 	       		 			<button type="submit" lang="en" id="createPrivateGroup">Create</button>
 	       		 		</form>
 	       		 		<div id="quickGroupMenu">
-							<h3 lang="en">Open my recently used Groups</h3>
-	       		 				<%if (groups.length >= 6) {%> 
+							<h3 lang="en">Open my recently used groups</h3>
+	       		 				<%if (groups.length >= 6) {%>
 									<ul>
 	       		 					<% for(var i = 0; i < 6; i++){ %>
 	       		 						<li><a href="group.html/<%= groups[i].groupID%>" lang="en"><%= groups[i].name %></a></li>
 	       		 					<% } %>
-			       		 			</ul>	       		 			
+			       		 			</ul>
 	       		 				 <%} else if (groups.length < 6 && groups.length > 0) {%>
 	       		 				 	<ul>
 	       		 					<% for(var i = 0; i < groups.length; i++){ %>
@@ -86,9 +86,9 @@ limitations under the License. -->
 	       		 					<% } %>
 			       		 			</ul>
 	       		 				 <%} else {%>
-	       		 					<h4 class="red" lang="en">You are in no Group at the moment.</h4>
+	       		 					<h4 class="red" lang="en">You are in no group at the moment.</h4>
 	       		 				<%}%>
-	       		 				
+
 	       		 		</div>
 	       		 	</div>
 	       		 	<div style="clear: both"></div>
